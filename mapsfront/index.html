@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maps Building type</title>
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+	<div class="container">
+		<div id="buildType" class="gm-style-mtc">
+			<div class="buttonControl">
+				<button id="hideMarks" onclick="HideShowMarks()"></button>
+			</div>
+			<div class="selectControl" id="selectControl">
+				<p>Building types</p>
+				<select id="typeBuildOptions" onchange="customSelectType()">
+				</select>
+			</div>
+		</div>
+		<div id="map"></div>
+	</div>
+</body>
+</html>
+
+
+<script src="scripts/basicData.js"></script>
+<script src="scripts/mapscript.js"></script>
+<script type="text/javascript">
+	InitTestData();
+</script>
+<script>
+	function initMap(type){
+        type = chooseType;
+		var opt = {
+			center :{
+				lat: Lat,
+				lng: Long
+			},
+			zoom: 18.5
+		};
+		var map = new google.maps.Map(document.getElementById("map"), opt);
+		customMap = map;
+		var marker = new google.maps.Marker({
+			position : opt.center,
+			map : map,
+			title : "Center"
+		});
+
+		const styleControl = document.getElementById("buildType");
+		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleControl);
+
+		for (var j = 0; j < initializedPlaces.length; j++){
+			if(initializedPlaces[j].type === type){
+				console.log(initializedPlaces[j].name);
+				var markerPlace = new google.maps.Marker({
+					position : { lat : initializedPlaces[j].latitude, lng : initializedPlaces[j].longtitude },
+					map : map,
+					title : initializedPlaces[j].name + ', type of building: ' + initializedPlaces[j].type,
+					optimized: false,
+					icon: "img/blueMarker35.png"
+				});
+				markers.push(markerPlace);
+			}
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	const script = document.body.appendChild(document.createElement('script'));
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap&libraries=marker`;
+</script>
+
+

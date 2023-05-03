@@ -1,0 +1,55 @@
+.container{
+	margin:20px 50px;
+}
+
+#map {
+	height: 700px;
+	width: 100%;
+}
+
+#buildType {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.buttonControl, .selectControl {
+	background-color: white;
+	padding: 10px 20px;
+	margin-bottom: 10px;
+}
+
+#buildType p {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#typeBuildOptions option {
+	font-size: 16px;
+}
+
+#hideMarks {
+	  background-color: #fff; 
+	  border: none;
+	  color: #000;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 18px;
+	  font-weight: bold;
+}
+
+#typeBuildOptions {
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  // Additional resets for further consistency
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: inherit;
+  line-height: inherit;
+}
